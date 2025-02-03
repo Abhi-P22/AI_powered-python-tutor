@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X } from "lucide-react"; // Icons for menu toggle
+import { Menu, X } from "lucide-react";
 
 function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -13,12 +13,12 @@ function Header() {
                     <Link to="/">AI Python Tutor</Link>
                 </h1>
 
-                {/* Hamburger Menu (Mobile) */}
+                {/* Menu(Mobile) */}
                 <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
                     {isOpen ? <X size={28} /> : <Menu size={28} />}
                 </button>
 
-                {/* Navigation Links (Desktop & Tablet) */}
+                {/* Navigation Links */}
                 <ul className="hidden md:flex space-x-6">
                     <li><Link className="hover:underline" to="/">Home</Link></li>
                     <li><Link className="hover:underline" to="/chat">Tutor</Link></li>
@@ -28,7 +28,7 @@ function Header() {
                 </ul>
             </div>
 
-            {/* Mobile Menu (Shown when open) */}
+            {/* Mobile Menu (open) */}
             {isOpen && (
                 <ul className="md:hidden flex flex-col items-center bg-blue-700 text-white py-4 space-y-4">
                     <li><Link className="hover:underline" to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
