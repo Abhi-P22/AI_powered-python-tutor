@@ -14,7 +14,7 @@ function Settings() {
 
     const clearApiKey = () => {
         localStorage.removeItem("apiKey");
-        setApiKey(""); // Clear the input field as well
+        setApiKey("");
         alert("API Key cleared!");
     };
 
@@ -30,9 +30,9 @@ function Settings() {
                 placeholder="Enter API Key"
             />
 
-            {/* Buttons Wrapper */}
+            {/* Buttons */}
             <div className="mt-6 flex space-x-4">
-                {/* Save API Key Button */}
+                {/* Save Button */}
                 <button
                     className="p-2 bg-green-500 text-white hover:bg-green-600 transition duration-200 w-full sm:w-auto"
                     onClick={saveApiKey}
@@ -40,7 +40,7 @@ function Settings() {
                     Save API Key
                 </button>
 
-                {/* Clear API Key Button */}
+                {/* ClearButton */}
                 <button
                     className="p-2 bg-red-500 text-white hover:bg-red-600 transition duration-200 w-full sm:w-auto"
                     onClick={clearApiKey}
