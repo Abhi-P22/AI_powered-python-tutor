@@ -5,11 +5,10 @@ function Chatbot() {
     const [message, setMessage] = useState("");
     const [responses, setResponses] = useState([]);
     const [character, setCharacter] = useState("fox");
-    const [learningStage, setLearningStage] = useState("start"); // Tracks tutorial progress
-    const [customTopic, setCustomTopic] = useState(""); // For custom topic input
-    const [loading, setLoading] = useState(false); // Track if the AI is processing
+    const [learningStage, setLearningStage] = useState("start");
+    const [customTopic, setCustomTopic] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    // Default API Key (Replace with your Gemini API key)
     const defaultApiKey = "AIzaSyCx8g9L2bWQZgQRao9N7c7VnmsnncyEk4s";
     const apiKey =localStorage.getItem("apiKey") || defaultApiKey ;
 
@@ -21,7 +20,7 @@ function Chatbot() {
             robot: "A logical and precise Python tutor."
         };
 
-        setLoading(true); // Start loading when the message is sent
+        setLoading(true); 
 
         try {
             const response = await axios.post(
@@ -45,7 +44,7 @@ function Chatbot() {
             console.error("Error fetching AI response:", error);
             alert("Error fetching AI response. Check your API key or Clear custom API key to go back to defaul API key.");
         } finally {
-            setLoading(false); // Stop loading once the response is received
+            setLoading(false);
         }
     };
 
@@ -64,15 +63,13 @@ function Chatbot() {
         if (customTopic.trim()) {
             sendMessage(`Teach me about ${customTopic} in Python.`);
             setLearningStage("learning");
-            setCustomTopic(""); // Reset custom topic input
+            setCustomTopic("");
         }
     };
 
     return (
         <div className="p-6 max-w-full sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto bg-white shadow-lg rounded-lg md:p-8">
             <h2 className="text-2xl font-bold text-center mb-4">🐍 AI Python Tutor</h2>
-
-            {/* Character Selection */}
             <div className="mb-4 text-center">
                 <label className="text-sm font-semibold mr-2">Choose Tutor:</label>
                 <select className="p-2 border rounded" value={character} onChange={e => setCharacter(e.target.value)}>
@@ -80,8 +77,6 @@ function Chatbot() {
                     <option value="robot">🤖 Logical Robot</option>
                 </select>
             </div>
-
-            {/* Tutorial Start */}
             {learningStage === "start" && (
                 <div className="text-center">
                     <p className="mb-4 text-lg">What do you want to learn about Python?</p>
@@ -96,8 +91,6 @@ function Chatbot() {
                             </button>
                         ))}
                     </div>
-
-                    {/* Custom Topic Input */}
                     <div className="mt-4">
                         <input
                             type="text"
@@ -116,7 +109,6 @@ function Chatbot() {
                 </div>
             )}
 
-            {/* AI Conversation */}
             {learningStage === "learning" && (
                 <div className="mt-4 space-y-3 max-h-64 overflow-auto p-3 border rounded">
                     {responses.map((res, i) => (
@@ -129,7 +121,7 @@ function Chatbot() {
                     {/* Loading Indicator */}
                     {loading && (
                         <div className="text-center">
-                            <p className="text-gray-500">...Waiting for response</p> {/* Loading indicator */}
+                            <p className="text-gray-500">...Waiting for response</p> 
                         </div>
                     )}
                 </div>
