@@ -10,7 +10,7 @@ function Chatbot() {
     const [loading, setLoading] = useState(false);
 
     const defaultApiKey = "AIzaSyCx8g9L2bWQZgQRao9N7c7VnmsnncyEk4s";
-    const apiKey =localStorage.getItem("apiKey") || defaultApiKey ;
+    const apiKey = defaultApiKey || localStorage.getItem("apiKey") ;
 
     const sendMessage = async (userMessage) => {
         if (!userMessage.trim()) return;
