@@ -24,7 +24,7 @@ function Chatbot() {
 
         try {
             const response = await axios.post(
-                `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`,
+                `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent?key=${apiKey}`,
                 {
                     contents: [{ parts: [{ text: `${personalities[character]} Answer this: ${userMessage}` }] }]
 
